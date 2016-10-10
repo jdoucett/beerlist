@@ -375,7 +375,11 @@ $date = date('Y/m/d H:i:s');
 <?php
 include 'dbconnect.php';
 $mysqli = mysqli_connect($db_host,$db_username,$db_pwd,$db_name);
-
+/* check connection */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
 //Make sure abv and ibu are numbers
 if ($abv == false){
 	$abv = 0;
@@ -383,11 +387,7 @@ if ($abv == false){
 if ($ibu == false){
 	$ibu = 0;
 }
-/* check connection */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
+
 // used to put any style of beer that is smoked at the end of all beers, just after Rauchbier
 if ($bev_fshvkw == 'Smoke'){
   $smoked = '1';
