@@ -17,6 +17,8 @@ if (($handle = fopen($url, "r")) !== FALSE) {
     }
     fclose($handle);
 }
+
+
 echo ("<br />");
 if (empty($beer_array)) {
 //console.log("Data array is empty");\
